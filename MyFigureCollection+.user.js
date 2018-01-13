@@ -6,10 +6,11 @@
 // @author       OwO
 // @include      https://myfigurecollection.net/*
 // @require      https://code.jquery.com/jquery-1.12.4.min.js
-// @grant        GM.setValue
-// @grant        GM.getValue
-// @grant        GM.deleteValue
 // ==/UserScript==
+
+//Settings//
+var profileHomepage = false; //Do you want to change your profile to your MFC homepage?
+//End of Settings//
 
 //Changes thumbnails of figures in the catalog to full figure
 (function() {
@@ -28,16 +29,10 @@
 
 //Kinda dumb function, makes it so you automatically go to your profile if you're on the homepage
 (function() {
-    if (window.location.href == "https://myfigurecollection.net/") {
+    if (window.location.href == "https://myfigurecollection.net/" && profileHomepage == true) {
         var username = $('.username.desktop').html();
         window.location.href = "https://myfigurecollection.net/profile/" + username;
     }
-})();
-
-//Adds settings on user profile for script
-(function() {
-    if (!window.location.href.includes("profile"))
-        return false;
 })();
 
 //Price Converter
