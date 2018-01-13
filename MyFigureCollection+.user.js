@@ -10,6 +10,9 @@
 
 //Settings//
 var profileHomepage = false; //Do you want to change your profile to your MFC homepage?
+var globalBG = true; //Do you want a custom background for all pages?
+var BGUrl = "https://i.imgur.com/nDfpzDB.jpg"; //If so what is it?
+var profileBG = false; //Do you want the global background to overwrite your profiles?
 //End of Settings//
 
 //Changes thumbnails of figures in the catalog to full figure
@@ -33,6 +36,13 @@ var profileHomepage = false; //Do you want to change your profile to your MFC ho
         var username = $('.username.desktop').html();
         window.location.href = "https://myfigurecollection.net/profile/" + username;
     }
+})();
+
+//background stuff
+(function() {
+    if (window.location.href.includes("profile") && profileBG == false || globalBG == false)
+        return false;
+    $('#ref-top').attr("style","background:#eeeeee url("+BGUrl+") no-repeat fixed");
 })();
 
 //Price Converter
